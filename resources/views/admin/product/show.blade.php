@@ -26,7 +26,7 @@
                                         <h4>{{$product->name}}</h4>
                                     </a>
                                     <a>
-                                        <h6>{{$product->price}}</h6>
+                                        <h6>Rs:{{number_format($product->price,2)}}</h6>
                                     </a>
                                 </div>
                             </div>

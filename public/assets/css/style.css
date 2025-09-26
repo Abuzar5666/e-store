@@ -9179,7 +9179,7 @@ h2 {
   position: relative;
   color: #414042;
 }
-h2:after {
+/* h2:after {
   content: "";
   position: absolute;
   background-color: #A8DF8E;
@@ -9187,7 +9187,7 @@ h2:after {
   height: 4px;
   bottom: 0px;
   left: 0px;
-}
+} */
 h3 {
   font-size: 36px;
 }

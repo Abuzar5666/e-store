@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\authenticate;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\notAuthenticate;
@@ -11,6 +12,10 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 use function Laravel\Prompts\form;
+
+// Home page
+Route::get('home/',[HomeController::class,'home'])->name('homePage');
+Route::get('home/products',[HomeController::class,'findProductPage'])->name('home.product');
 
 // can not access these route if user login
 Route::middleware('auth')->group(function(){
@@ -47,6 +52,9 @@ Route::middleware('notAuth')->group(function(){
         Route::get('product/create',[ProductController::class,'create'])->name('product.create');
         Route::post('product/store',[ProductController::class,'store'])->name('product.store');
         Route::get('product/show/{id}',[ProductController::class,'show'])->name('product.show');
+        Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
+        Route::post('product/update/{id}',[ProductController::class,'update'])->name('product.update');
+        Route::delete('product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
     });
 
 });

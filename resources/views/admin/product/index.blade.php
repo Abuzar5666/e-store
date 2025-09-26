@@ -10,7 +10,7 @@
             <div class="col-lg-9">
                 @if(Session::has('error'))
                     
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div class="alert alert-warning alert-dismissible fade show col-lg-9" role="alert">
                     {{Session::get('error')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
@@ -18,7 +18,7 @@
                 @endif
                 @if(Session::has('success'))
                     
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show col-lg-9" role="alert">
                     {{Session::get('success')}}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
@@ -50,7 +50,7 @@
                                                     <div class="job-name fw-500">{{$product->id}}</div>
                                                 </td>
                                                 <td>{{$product->name}}</td>
-                                                <td>{{$product->price}}</td>
+                                                <td>{{ number_format($product->price, 2)}}</td>
                                                 <td>
                                                     <div class="action-dots ">
                                                         <a href="#" class="" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,13 +58,13 @@
                                                         </a>
                                                         <ul class="dropdown-menu dropdown-menu-end">
                                                             <li><a class="dropdown-item" href="{{route('product.show',$product->id)}}"> <i class="fa fa-eye" aria-hidden="true"></i> View</a></li>
-                                                            <li><a class="dropdown-item" href=""><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
-                                                            {{-- <form action="{{route('category.delete',$category->id)}}" method="POST"> --}}
-                                                                {{-- @csrf --}}
-                                                                {{-- @method('DELETE') --}}
+                                                            <li><a class="dropdown-item" href="{{route('product.edit',$product->id)}}"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
+                                                            <form action="{{route('product.delete',$product->id)}}" method="POST"> 
+                                                                @csrf
+                                                                @method('DELETE')
 
                                                                 <li><button type="submit" class="dropdown-item"><i class="fa fa-trash" aria-hidden="true"></i> Remove</button></li>
-                                                            {{-- </form> --}}
+                                                            </form>
                                                         </ul>
                                                     </div>
                                                 </td>

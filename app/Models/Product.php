@@ -12,12 +12,12 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
-    public function getPriceAttribute()
-    {
-        // format number with two decimals and thousand separators
-        $formatted = number_format($this->attributes['price'], 2);
+    // public function getPriceAttribute()
+    // {
+    //     // format number with two decimals and thousand separators
+    //     $formatted = number_format($this->attributes['price'], 2);
 
         
-        return 'Rs ' . $formatted;
-    }
+    //     return  $formatted;
+    // }
 }

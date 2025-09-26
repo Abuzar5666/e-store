@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->decimal('price', 10, 2)->default(0);
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('status')->default(1);
             $table->timestamps();
         });
