@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\FavoriteProductController;
 use App\Http\Middleware\authenticate;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\notAuthenticate;
@@ -14,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 use function Laravel\Prompts\form;
 
 // Home page
-Route::get('home/',[HomeController::class,'home'])->name('homePage');
+Route::get('/',[HomeController::class,'home'])->name('homePage');
 Route::get('home/products',[HomeController::class,'findProductPage'])->name('home.product');
+Route::get('home/productDetail/{id}',[HomeController::class,'productDetailPage'])->name('home.productDetail');
 
 // can not access these route if user login
 Route::middleware('auth')->group(function(){
@@ -56,5 +59,14 @@ Route::middleware('notAuth')->group(function(){
         Route::post('product/update/{id}',[ProductController::class,'update'])->name('product.update');
         Route::delete('product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
     });
+
+    // favortie product
+    Route::get('home/favoriteProduct/{id}',[FavoriteProductController::class,'favoriteProduct'])->name('home.favoriteProduct');
+    Route::get('home/favorite/index',[FavoriteProductController::class,'index'])->name('home.favorite.index');
+    Route::delete('home/favorite/delete/{id}',[FavoriteProductController::class,'delete'])->name('home.favorite.delete');
+
+    // Cart product
+    Route::get('home/cart/index',[CartController::class,'index'])->name('cart.index');
+    Route::post('home/cart/store',[CartController::class,'store'])->name('cart.store');
 
 });

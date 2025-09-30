@@ -9560,6 +9560,21 @@ header .navbar-brand {
   display: inline-block;
   background: #EFFDF5;
 }
+.fav_heart{
+  width: 40px;
+  height: 40px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* color: #00D363; */
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+  color: #EFFDF5;
+  background: #00D363;
+  
+}
 .section-4 .job_details_area .single_jobs .jobs_right .apply_now a.heart_mark:hover {
   background: #00D363;
   color: #fff;

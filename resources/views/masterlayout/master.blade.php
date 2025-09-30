@@ -8,6 +8,8 @@
 	<meta name="HandheldFriendly" content="True" />
 	<meta name="pinterest" content="nopin" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" />
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
@@ -29,6 +31,7 @@
 						<a class="nav-link" aria-current="page" href="{{route('home.product')}}">Find Products</a>
 					</li>										
 				</ul>				
+				<a class="btn btn-outline-primary me-2" href="{{route('cart.index')}}" type="submit"><i class="fa-solid fa-cart-shopping"></i>Carts</a>
                 @if(Auth::check())
                     
 				<a class="btn btn-outline-primary me-2" href="{{route('account.logout')}}" type="submit">Logout</a>
