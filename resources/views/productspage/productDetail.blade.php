@@ -42,9 +42,11 @@
                                         <div class="location">
                                             <p>Rs:{{number_format($product->price,2)}}</p>
                                         </div>
-                                        <a href="#" class="btn btn-primary">
-                                            <i class="fa-solid fa-cart-shopping"></i>Add to Cart
-                                        </a>
+                                        <form action="{{ route('cart.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <button type="submit" class="btn btn-primary">Add to <i class="fa-solid fa-cart-shopping"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -52,10 +54,8 @@
                                 <div class="apply_now">
                                     @if($countFP==1)
                                     <a class="fav_heart" href="{{route('home.favoriteProduct',$product->id)}}"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                    
                                     @else
                                     <a class="heart_mark" href="{{route('home.favoriteProduct',$product->id)}}"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                        
                                     @endif
                                 </div>
                             </div>

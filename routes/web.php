@@ -4,7 +4,11 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\mailSend;
+use App\Http\Controllers\User\BuyProductController;
+use App\Http\Controllers\Admin\BuyProductController as AdminBuyController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FavoriteProductController;
 use App\Http\Middleware\authenticate;
@@ -58,6 +62,9 @@ Route::middleware('notAuth')->group(function(){
         Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
         Route::post('product/update/{id}',[ProductController::class,'update'])->name('product.update');
         Route::delete('product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+          // show all buy product in buy products in admin page
+        Route::get('admin/buy/product',[AdminBuyController::class,'index'])->name('admin.buy.product.index');
     });
 
     // favortie product
@@ -68,5 +75,16 @@ Route::middleware('notAuth')->group(function(){
     // Cart product
     Route::get('home/cart/index',[CartController::class,'index'])->name('cart.index');
     Route::post('home/cart/store',[CartController::class,'store'])->name('cart.store');
+    Route::get('home/cart/delete/{id}',[CartController::class,'delete'])->name('cart.delete');
+    Route::put('home/cart/update/{id}',[CartController::class,'update'])->name('cart.update');
+    
+    // Order process
+    Route::get('checkout/index',[CheckoutController::class,'index'])->name('checkout.index');
+    Route::post('checkout/store',[CheckoutController::class,'store'])->name('checkout.store');
 
+    // Buy product user
+    Route::get('buy/product',[BuyProductController::class,'index'])->name('buy.product.index');
+
+  
+    
 });
